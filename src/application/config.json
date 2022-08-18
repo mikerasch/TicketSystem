@@ -1,0 +1,13 @@
+{
+  "token": "INSERT HERE",
+  "staffPrivilege": "Cryptomat Team|Moderator",
+  "ticketSystem": {
+    "stagingArea": "create-ticket",
+    "categories": [
+      "ClAIM ROLES TICKETS",
+      "COLLAB REQUEST TICKETS",
+      "SUPPORT REQUEST TICKETS",
+      "CLOSED TICKETS"
+    ]
+  }
+}

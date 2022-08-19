@@ -5,10 +5,13 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utility.HoldTickets;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Application {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
@@ -27,6 +30,15 @@ public class Application {
         } catch (Exception e) {
             logger.error("Error while trying to initially start the bot!");
         }
+        int MINUTES = 20;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                logger.warn("Clearing rate limiting map....");
+                HoldTickets.rateLimit.clear();
+            }
+        }, 0, 1000 * 60 * MINUTES);
     }
 
     public static void runBot(Config config){

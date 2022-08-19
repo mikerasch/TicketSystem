@@ -2,30 +2,26 @@ package listeners;
 
 import config.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
+import org.jetbrains.annotations.NotNull;
 
 public class OnMessageSendInfoListener extends ListenerAdapter {
-    private final JDA jda;
-    private final Config config;
     private final String STAGING_AREA_NAME;
-    public OnMessageSendInfoListener(JDA jda, Config config){
-        this.jda = jda;
-        this.config = config;
+    public OnMessageSendInfoListener(Config config){
         this.STAGING_AREA_NAME = config.getTicketSystem().getStagingArea();
     }
 
     @Override
-    public void onMessageReceived(MessageReceivedEvent event) {
+    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         TextChannel textChannel = event.getTextChannel();
         Message message = event.getMessage();
         EmbedBuilder embedBuilder;
-        if (message.getContentRaw().equals("!ticket") && textChannel.getName().equals(STAGING_AREA_NAME)){
+        if (message.getContentRaw().equals("!ticket") && textChannel.getId().equals(STAGING_AREA_NAME)){
             embedBuilder = new EmbedBuilder();
             embedBuilder.setTitle("Collaboration Request");
             embedBuilder.addField("Thank you for your interest in collaborating with us!",

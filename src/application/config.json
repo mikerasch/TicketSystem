@@ -1,13 +1,12 @@
 {
-  "token": "NzU4OTgzMzY3NTg4MTg0MDY0.GfnPf1.LEtscTcNjGsM7oqQnOLL7jml33WL1jJwrzSTTg",
-  "staffPrivilege": "Cryptomat Team|Moderator",
+  "token": "ENTER TOKEN HERE",
+  "staffPrivilege": ["ENTER LIST OF ROLE ID HERE"],
   "ticketSystem": {
-    "stagingArea": "create-ticket",
-    "categories": [
-      "ClAIM ROLES TICKETS",
-      "COLLAB REQUEST TICKETS",
-      "SUPPORT REQUEST TICKETS",
-      "CLOSED TICKETS"
-    ]
+    "stagingArea": "1009663524710142022",
+    "claimRoleCat": "1009683164064661504",
+    "collabReqCat": "1009683190568472576",
+    "supportRequestCat": "1009683217911140352",
+    "closedTicketCat": "1009683369287766076",
+    "transcriptTicketChan": "1010002183355379752"
   }
 }

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class TicketActions {
     private static final Logger logger = LoggerFactory.getLogger(TicketActions.class);
@@ -53,10 +54,9 @@ public class TicketActions {
                 if(!usersInTicket.contains(message.getAuthor().getAsTag())){
                     usersInTicket.add(message.getAuthor().getAsTag());
                 }
-                StringBuilder build = new StringBuilder();
-                build.append(message.getAuthor().getAsTag() + ": ");
-                build.append(message.getContentRaw());
-                transcript.add(build.toString());
+                String build = message.getAuthor().getAsTag() + ": " +
+                        message.getContentRaw();
+                transcript.add(build);
             }
             try{
                 FileWriter fileWrite = new FileWriter("transcript.txt");
@@ -76,7 +76,7 @@ public class TicketActions {
                 eb.appendDescription(i +"\n");
             }
             logger.info("Creating transcript...");
-            guild.getTextChannelById(TRANSCRIPT_TICKET_ID).sendMessageEmbeds(eb.build()).addFile(new File("transcript.txt")).queue();
+            Objects.requireNonNull(guild.getTextChannelById(TRANSCRIPT_TICKET_ID)).sendMessageEmbeds(eb.build()).addFile(new File("transcript.txt")).queue();
         });
     }
     public void disregard(){

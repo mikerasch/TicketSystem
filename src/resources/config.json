@@ -1,12 +1,12 @@
 {
-  "token": "MTAxMTQ2NjY5OTk2ODYxNDQwMA.GLPbCu.jcbOa5SMlAtkX6STcLw4Rj8GnBBqpRVtKdmAL8",
-  "staffPrivilege": ["987753824263495710","987742373679353907","1006720493015007282"],
+  "token": "ENTER TOKEN HERE",
+  "staffPrivilege": ["ENTER LIST OF ROLE ID HERE"],
   "ticketSystem": {
-    "stagingArea": "1011516906655731733",
-    "genSupportCat": "1011516727818989619",
-    "collabReqCat": "1011516788850311258",
-    "reportReqCat": "1011516821406486588",
-    "closedTicketCat": "1011516860065394698",
-    "transcriptTicketChan": "1011520096134508545"
+    "stagingArea": "1009663524710142022",
+    "claimRoleCat": "1009683164064661504",
+    "collabReqCat": "1009683190568472576",
+    "supportRequestCat": "1009683217911140352",
+    "closedTicketCat": "1009683369287766076",
+    "transcriptTicketChan": "1010002183355379752"
   }
 }

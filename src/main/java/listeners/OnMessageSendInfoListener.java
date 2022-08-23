@@ -35,9 +35,8 @@ public class OnMessageSendInfoListener extends ListenerAdapter {
 
 
             embedBuilder = new EmbedBuilder();
-            embedBuilder.setTitle("Claim Roles");
-            embedBuilder.setDescription("If you have completed all the steps for Mint List, or are " +
-                    "coming from a collaboration, react below!");
+            embedBuilder.setTitle("General Support");
+            embedBuilder.setDescription("Make sure to read all other options before creating a general support ticket!");
             embedBuilder.setFooter("To create a ticket react below!");
 
             textChannel.sendMessageEmbeds(embedBuilder.build()).setActionRow(
@@ -46,9 +45,9 @@ public class OnMessageSendInfoListener extends ListenerAdapter {
 
 
             embedBuilder = new EmbedBuilder();
-            embedBuilder.setTitle("Support");
-            embedBuilder.setDescription("Before creating a ticket, please make sure you have already" +
-                    " read carefully the channels in the server!");
+            embedBuilder.setTitle("Report a User");
+            embedBuilder.setDescription("Before creating a ticket, please make sure you have" +
+                    " sufficient evidence. Repeated false accusations may result in punishment");
             embedBuilder.setFooter("To create a ticket react below!");
 
             textChannel.sendMessageEmbeds(embedBuilder.build()).setActionRow(

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.List;
 
 public final class Config{
@@ -23,9 +23,9 @@ public final class Config{
         this.ticketSystem = ticketSystem;
     }
 
-    public static Config load(Path path) throws IOException {
+    public static Config load(InputStream path) throws IOException {
         return new ObjectMapper().registerModule(new JavaTimeModule())
-                .readValue(path.toFile(),Config.class);
+                .readValue(path,Config.class);
     }
 
     public String getToken() {

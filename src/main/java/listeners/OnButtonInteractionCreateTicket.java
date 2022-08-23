@@ -39,10 +39,10 @@ public class OnButtonInteractionCreateTicket extends ListenerAdapter {
                 ticket = new Ticket(guild,member,"#ticket " + member.getEffectiveName(),config.getTicketSystem().getCollabReqCat(),event,config);
             }
             else if(event.getButton().getId().equals("ticket2")){
-                ticket = new Ticket(guild,member,"#ticket " + member.getEffectiveName(),config.getTicketSystem().getClaimRoleCat(),event,config);
+                ticket = new Ticket(guild,member,"#ticket " + member.getEffectiveName(),config.getTicketSystem().getGenSupportCat(),event,config);
             }
             else if(event.getButton().getId().equals("ticket3")){
-                ticket = new Ticket(guild,member,"#ticket " + member.getEffectiveName(),config.getTicketSystem().getSupportRequestCat(),event,config);
+                ticket = new Ticket(guild,member,"#ticket " + member.getEffectiveName(),config.getTicketSystem().getReportReqCat(),event,config);
             }
             Objects.requireNonNull(ticket).addChannel();
             HoldTickets.addTicket(ticket);

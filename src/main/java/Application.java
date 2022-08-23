@@ -9,18 +9,18 @@ import utility.HoldTickets;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Application {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
-    private static final String CONFIGJSON = "src/application/config.json";
-    public static void main(String[] args) {
-        Path configPath = Path.of(CONFIGJSON);
+    private static final String CONFIGJSON = "config.json";
+    public static void main(String[] args){
+        InputStream inputStream = Application.class.getClassLoader().getResourceAsStream(CONFIGJSON);
         Config config;
         try{
-            config = Config.load(configPath);
+            config = Config.load(inputStream);
         } catch (IOException e) {
             logger.error("Unable to load the configuration file!");
             return;

@@ -2,6 +2,7 @@ package listeners;
 
 import config.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.IPermissionContainer;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -64,13 +65,22 @@ public class OnCloseTicketListener extends ListenerAdapter {
                     .transcriptId(config.getTicketSystem().getTranscriptTicketChan())
                     .guild(event.getGuild()).build().moveChannel().getAndSendTranscript();
             String channelName = textChannel.getName().substring(7);
-            Objects.requireNonNull(event.getGuild().getTextChannelById(textChannel.getId())).getManager().setName("Closed " + channelName).queue();
             event.getTextChannel().sendMessage("Ticket closed by: " + Objects.requireNonNull(member).getUser().getAsMention()).queue();
+            removeTicketCreator(textChannel);
+            Objects.requireNonNull(event.getGuild().getTextChannelById(textChannel.getId())).getManager().setName("Closed " + channelName).queue();
         }
         else if(event.getButton().getId().equals("disregard")){
             new TicketActions.Builder(textChannel).build()
                     .disregard();
         }
+    }
+
+    private void removeTicketCreator(TextChannel channel) {
+        long permissionContainerId = channel.getPermissionContainer().getIdLong();
+        if(ADMIN_PRIVILEGE.contains(String.valueOf(permissionContainerId))){
+            return;
+        }
+        channel.getManager().removePermissionOverride(permissionContainerId).queue();
     }
 
     public boolean hasRole(Member member){
